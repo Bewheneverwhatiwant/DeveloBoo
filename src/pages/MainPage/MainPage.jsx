@@ -11,6 +11,7 @@ const ContainerCenter = styled.div`
   align-items: center;
   gap: 10px;
   width: 100%;
+  min-height: 80vh;
 `;
 
 const PageContainer = styled(ContainerCenter)`
