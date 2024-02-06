@@ -16,17 +16,11 @@ const Button = styled.button`
   justify-content: center;
 `;
 
-export default function Test_buttons({ onSelect }) {
+export default function Test_buttons({ onSelect, resetImageIndex }) {
     return (
         <CustomRow>
-            <Button onClick={() => onSelect('glass')}>
-                glass
-                {/* 이미지 태그 제거, 버튼 클릭으로 상태 변경 처리 */}
-            </Button>
-            <Button onClick={() => onSelect('jacket')}>
-                jacket
-                {/* 이미지 태그 제거, 버튼 클릭으로 상태 변경 처리 */}
-            </Button>
+            <Button onClick={() => { onSelect('glass'); resetImageIndex(); }}>glass</Button>
+            <Button onClick={() => { onSelect('jacket'); resetImageIndex(); }}>jacket</Button>
         </CustomRow>
     );
 };
