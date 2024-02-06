@@ -33,7 +33,7 @@ font-size: 10px;
 `;
 
 const PreviewContainer = styled.div`
-  width: 100%;
+  width: 90%;
   height: 70%;
   display: flex;
   align-items: center;
