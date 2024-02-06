@@ -18,11 +18,11 @@ height: 20px;
   justify-content: center;
 `;
 
-export default function Test_buttons({ onSelect, resetImageIndex }) {
+export default function Test_buttons({ onSelect }) {
     return (
         <CustomRow>
-            <Button onClick={() => { onSelect('glass'); resetImageIndex(); }}>glass</Button>
-            <Button onClick={() => { onSelect('jacket'); resetImageIndex(); }}>jacket</Button>
+            <Button onClick={() => { onSelect('glass'); }}>glass</Button>
+            <Button onClick={() => { onSelect('jacket'); }}>jacket</Button>
         </CustomRow>
     );
 };

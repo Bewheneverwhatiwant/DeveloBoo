@@ -20,28 +20,31 @@ const PageContainer = styled(ContainerCenter)`
 `;
 
 export default function MainPage() {
-  const [selectedItem, setSelectedItem] = useState('');
-  const [imageIndex, setImageIndex] = useState(0); // 이미지 인덱스 초기값을 0으로 설정
+  const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false });
+  const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
 
   const glassImages = ['Test_glass1.png', 'Test_glass2.png', 'Test_glass3.png', 'Test_glass4.png'];
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
 
-  // '다음' 버튼
-  const handleNextClick = () => {
-    if (selectedItem === 'glass') {
-      setImageIndex((prevIndex) => (prevIndex + 1) % glassImages.length);
-    } else if (selectedItem === 'jacket') {
-      setImageIndex((prevIndex) => (prevIndex + 1) % jacketImages.length);
-    }
+  // 항목 표시 여부 토글
+  const toggleItem = (item) => {
+    setSelectedItem(prev => ({ ...prev, [item]: !prev[item] }));
   };
 
-  // '이전' 버튼
-  const handlePrevClick = () => {
-    if (selectedItem === 'glass') {
-      setImageIndex((prevIndex) => prevIndex - 1 < 0 ? glassImages.length - 1 : prevIndex - 1);
-    } else if (selectedItem === 'jacket') {
-      setImageIndex((prevIndex) => prevIndex - 1 < 0 ? jacketImages.length - 1 : prevIndex - 1);
-    }
+  // '다음' 버튼 클릭 핸들러 수정
+  const handleNextClick = (item) => {
+    setImageIndex((prev) => ({
+      ...prev,
+      [item]: (prev[item] + 1) % (item === 'glass' ? glassImages.length : jacketImages.length)
+    }));
+  };
+
+  // '이전' 버튼 클릭 핸들러 수정
+  const handlePrevClick = (item) => {
+    setImageIndex((prev) => ({
+      ...prev,
+      [item]: prev[item] - 1 < 0 ? (item === 'glass' ? glassImages.length : jacketImages.length) - 1 : prev[item] - 1
+    }));
   };
 
   return (
@@ -54,7 +57,7 @@ export default function MainPage() {
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
         />
-        <Test_buttons onSelect={setSelectedItem} resetImageIndex={() => setImageIndex(0)} />
+        <Test_buttons onSelect={toggleItem} />
       </PageContainer>
     </ContainerCenter>
   );
