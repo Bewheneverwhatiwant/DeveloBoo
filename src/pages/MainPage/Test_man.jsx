@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import StyledImg from '../../Components/Container/StyledImg';
 import CustomRow from '../../Components/Container/CustomRow';
@@ -61,6 +61,24 @@ const Input = styled.input`
   font-family: 'RIDIBatang';
 `;
 
+const TextArea = styled.textarea`
+  width: 55%;
+  height: 30%;
+  border: 2px solid ${props => props.editing ? 'grey' : 'transparent'};
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  z-index: 3;
+  font-family: 'RIDIBatang';
+  resize: none; /* 사용자가 직접 크기를 조절할 수 없도록 설정 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  /*vertical-align: top; /* 내용이 상단에서부터 시작하도록 설정 */
+  white-space: pre-wrap; /* 공백이나 줄바꿈을 유지하면서 너비를 초과하는 텍스트를 다음 줄로 넘김 */
+  word-wrap: break-word; /* 단어가 너비를 초과하는 경우 줄바꿈 */
+`;
+
 // const CompleteButton = styled.button`
 //   background-color: ${props => props.editing ? 'grey' : 'transparent'};
 //   color: white;
@@ -111,6 +129,8 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
                                 onChange={(e) => setChatText(e.target.value)}
                                 editing={isEditing}
                                 onDoubleClick={() => setIsEditing(true)}
+
+                                maxLength={5}
                             />
                             {/* <CompleteButton
                                 onClick={handleComplete}

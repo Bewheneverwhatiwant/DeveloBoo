@@ -5,6 +5,7 @@ import Test_man from './Test_man';
 import html2canvas from 'html2canvas';
 import StyledImg from '../../Components/Container/StyledImg';
 import CustomColumn from '../../Components/Container/CustomColumn';
+import CustomCenter from '../../Components/Container/CustomCenter';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -59,6 +60,19 @@ display: flex;
 const OnlyBoo2 = styled.div`
 display: flex;
 position: relative;
+`;
+
+const Text = styled.a`
+width: 60%;
+height: 40%;
+position: absolute;
+top: 40%;
+left: 10%;
+
+color: black;
+zIndex: 3;
+font-family: 'RIDIBatang';
+line-height: 20px;
 `;
 
 export default function MainPage() {
@@ -148,9 +162,9 @@ export default function MainPage() {
                 <OnlyBoo2>
                   <StyledImg src={'icon_chat.png'} width='90%' height='40vh' onDoubleClick={handleDoubleClick} />
 
-                  <p style={{ position: 'absolute', top: '25%', left: '10%', color: 'black', zIndex: 3 }}>
+                  <Text>
                     {chatText}
-                  </p>
+                  </Text>
                 </OnlyBoo2>
               )}
               <OnlyBoo>
