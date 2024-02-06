@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Test_buttons from './Test_buttons';
 import Test_man from './Test_man';
 import html2canvas from 'html2canvas';
+import StyledImg from '../../Components/Container/StyledImg';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -21,8 +22,9 @@ const PageContainer = styled(ContainerCenter)`
 `;
 
 const Down = styled.button`
+width: 40%;
 background-color: skyblue;
-color: blue;
+color: white;
 border: none;
 border-radius: 10px;
 padding: 10px;
@@ -30,10 +32,26 @@ font-family: 'RIDIBatang';
 font-size: 10px;
 `;
 
+const PreviewContainer = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 2px dashed #ccc; // 미리보기 구분
+`;
+
+const OverlayImg = styled(StyledImg)`
+  position: absolute;
+  z-index: 2;
+`;
+
 export default function MainPage() {
   const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false });
   const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
   const booContainerRef = useRef(null); // BooContainer를 참조하기 위한 ref 추가
+  const [showPreview, setShowPreview] = useState(false); // 미리보기 표시
 
   const glassImages = ['Test_glass1.png', 'Test_glass2.png', 'Test_glass3.png', 'Test_glass4.png'];
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
@@ -80,6 +98,10 @@ export default function MainPage() {
     });
   };
 
+  const togglePreview = () => {
+    setShowPreview(!showPreview); // 미리보기 표시 상태 토글
+  };
+
   return (
     <ContainerCenter>
       <PageContainer>
@@ -92,6 +114,19 @@ export default function MainPage() {
           ref={booContainerRef}
         />
         <Test_buttons onSelect={toggleItem} />
+        <Down onClick={togglePreview}>미리보기</Down>
+        {showPreview && (
+          <PreviewContainer>
+            <StyledImg src={'Test_man.png'} width='80%' height='100%' />
+            {selectedItem.glass && (
+              <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
+            )}
+            {selectedItem.jacket && (
+              <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
+            )}
+          </PreviewContainer>
+        )}
+
         <Down onClick={downloadImage}>다운로드 하기</Down>
       </PageContainer>
     </ContainerCenter>

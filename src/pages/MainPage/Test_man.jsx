@@ -20,12 +20,12 @@ const OverlayImg = styled(StyledImg)`
 `;
 
 const MoveButton = styled.button`
-width: 100px;
+width: 60px;
 height: 20px;
 margin: 5px;
 
   background-color: pink;
-  color: black;
+  color: white;
   border: none;
   border-radius: 10px;
   font-family: 'RIDIBatang';
@@ -46,10 +46,10 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
             <CustomCenter>
                 <CustomColumn>
                     {selectedItem.glass && (
-                        <MoveButton onClick={() => handlePrevClick('glass')}>이전 Glass</MoveButton>
+                        <MoveButton onClick={() => handlePrevClick('glass')}>이전 안경</MoveButton>
                     )}
                     {selectedItem.jacket && (
-                        <MoveButton onClick={() => handlePrevClick('jacket')}>이전 Jacket</MoveButton>
+                        <MoveButton onClick={() => handlePrevClick('jacket')}>이전 자켓</MoveButton>
                     )}
                 </CustomColumn>
             </CustomCenter>
@@ -65,10 +65,10 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
             <CustomCenter>
                 <CustomColumn>
                     {selectedItem.glass && (
-                        <MoveButton onClick={() => handleNextClick('glass')}>다음 Glass</MoveButton>
+                        <MoveButton onClick={() => handleNextClick('glass')}>다음 안경</MoveButton>
                     )}
                     {selectedItem.jacket && (
-                        <MoveButton onClick={() => handleNextClick('jacket')}>다음 Jacket</MoveButton>
+                        <MoveButton onClick={() => handleNextClick('jacket')}>다음 자켓</MoveButton>
                     )}
                 </CustomColumn>
             </CustomCenter>

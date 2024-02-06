@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CustomRow from '../../Components/Container/CustomRow';
+import CustomColumn from '../../Components/Container/CustomColumn';
 
 const Button = styled.button`
 width: 100px;
@@ -21,8 +22,12 @@ height: 20px;
 export default function Test_buttons({ onSelect }) {
     return (
         <CustomRow>
-            <Button onClick={() => { onSelect('glass'); }}>glass</Button>
-            <Button onClick={() => { onSelect('jacket'); }}>jacket</Button>
+            <CustomColumn>
+                <Button onClick={() => { onSelect('glass'); }}>안경 추가</Button>
+            </CustomColumn>
+            <CustomColumn>
+                <Button onClick={() => { onSelect('jacket'); }}>자켓 추가</Button>
+            </CustomColumn>
         </CustomRow>
     );
 };
