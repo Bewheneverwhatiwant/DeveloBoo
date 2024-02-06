@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import CustomRow from '../../Components/Container/CustomRow';
 
 const Button = styled.button`
+width: 100px;
+height: 20px;
   padding: 10px;
   background-color: pink;
   color: white;
