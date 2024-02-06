@@ -11,6 +11,12 @@ const BooContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const OnlyBoo = styled.div`
+display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 `;
 
@@ -54,13 +60,20 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
                 </CustomColumn>
             </CustomCenter>
             <BooContainer ref={booContainerRef} id="booContainer">
-                <StyledImg src={'Test_man.png'} width='80%' height='100%' />
-                {selectedItem.glass && (
-                    <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
-                )}
-                {selectedItem.jacket && (
-                    <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
-                )}
+                <CustomColumn>
+                    {selectedItem.chat && (
+                        <StyledImg src={'icon_chat.png'} width='90%' height='40vh' />
+                    )}
+                    <OnlyBoo>
+                        <StyledImg src={'Test_man.png'} width='80%' height='100%' />
+                        {selectedItem.glass && (
+                            <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
+                        )}
+                        {selectedItem.jacket && (
+                            <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
+                        )}
+                    </OnlyBoo>
+                </CustomColumn>
             </BooContainer>
             <CustomCenter>
                 <CustomColumn>

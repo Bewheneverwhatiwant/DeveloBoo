@@ -24,6 +24,7 @@ export default function Test_buttons({ onSelect }) {
         <CustomRow>
             <CustomColumn>
                 <Button onClick={() => { onSelect('glass'); }}>안경 추가</Button>
+                <Button onClick={() => { onSelect('chat'); }}>말풍선 추가</Button>
             </CustomColumn>
             <CustomColumn>
                 <Button onClick={() => { onSelect('jacket'); }}>자켓 추가</Button>

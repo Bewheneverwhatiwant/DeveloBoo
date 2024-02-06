@@ -4,6 +4,7 @@ import Test_buttons from './Test_buttons';
 import Test_man from './Test_man';
 import html2canvas from 'html2canvas';
 import StyledImg from '../../Components/Container/StyledImg';
+import CustomColumn from '../../Components/Container/CustomColumn';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -48,8 +49,15 @@ const OverlayImg = styled(StyledImg)`
   z-index: 2;
 `;
 
+const OnlyBoo = styled.div`
+display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
 export default function MainPage() {
-  const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false });
+  const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false, chat: false });
   const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
   const booContainerRef = useRef(null); // BooContainer를 참조하기 위한 ref 추가
   const [showPreview, setShowPreview] = useState(false); // 미리보기 표시
@@ -118,13 +126,22 @@ export default function MainPage() {
         <Down onClick={togglePreview}>미리보기</Down>
         {showPreview && (
           <PreviewContainer>
-            <StyledImg src={'Test_man.png'} width='80%' height='100%' />
-            {selectedItem.glass && (
-              <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
-            )}
-            {selectedItem.jacket && (
-              <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
-            )}
+
+            <CustomColumn>
+              {selectedItem.chat && (
+                <StyledImg src={'icon_chat.png'} width='90%' height='40vh' />
+              )}
+              <OnlyBoo>
+                <StyledImg src={'Test_man.png'} width='80%' height='100%' />
+                {selectedItem.glass && (
+                  <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
+                )}
+                {selectedItem.jacket && (
+                  <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
+                )}
+              </OnlyBoo>
+            </CustomColumn>
+
           </PreviewContainer>
         )}
 
