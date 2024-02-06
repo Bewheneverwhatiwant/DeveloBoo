@@ -43,23 +43,31 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
         <CustomRow>
             <CustomCenter>
                 <CustomColumn>
-                    <MoveButton onClick={() => handlePrevClick('glass')}>이전 Glass</MoveButton>
-                    <MoveButton onClick={() => handlePrevClick('jacket')}>이전 Jacket</MoveButton>
+                    {selectedItem.glass && (
+                        <MoveButton onClick={() => handlePrevClick('glass')}>이전 Glass</MoveButton>
+                    )}
+                    {selectedItem.jacket && (
+                        <MoveButton onClick={() => handlePrevClick('jacket')}>이전 Jacket</MoveButton>
+                    )}
                 </CustomColumn>
             </CustomCenter>
             <BooContainer>
                 <StyledImg src={'Test_man.png'} width='80%' height='100%' />
                 {selectedItem.glass && (
-                    <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='10%' style={{ top: '10%' }} />
+                    <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />
                 )}
                 {selectedItem.jacket && (
-                    <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='30%' style={{ top: '20%' }} />
+                    <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='60%' style={{ top: '20%' }} />
                 )}
             </BooContainer>
             <CustomCenter>
                 <CustomColumn>
-                    <MoveButton onClick={() => handleNextClick('glass')}>다음 Glass</MoveButton>
-                    <MoveButton onClick={() => handleNextClick('jacket')}>다음 Jacket</MoveButton>
+                    {selectedItem.glass && (
+                        <MoveButton onClick={() => handleNextClick('glass')}>다음 Glass</MoveButton>
+                    )}
+                    {selectedItem.jacket && (
+                        <MoveButton onClick={() => handleNextClick('jacket')}>다음 Jacket</MoveButton>
+                    )}
                 </CustomColumn>
             </CustomCenter>
         </CustomRow>
