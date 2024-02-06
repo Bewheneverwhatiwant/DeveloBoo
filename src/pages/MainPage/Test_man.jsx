@@ -20,7 +20,7 @@ const OverlayImg = styled(StyledImg)`
 `;
 
 const MoveButton = styled.button`
-width: 50px;
+width: 100px;
 height: 20px;
 margin: 5px;
 
@@ -48,12 +48,12 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
                 </CustomColumn>
             </CustomCenter>
             <BooContainer>
-                <StyledImg src={'Test_man.png'} width='50%' height='70%' />
+                <StyledImg src={'Test_man.png'} width='80%' height='100%' />
                 {selectedItem.glass && (
-                    <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='10%' style={{ top: '20%' }} />
+                    <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='10%' style={{ top: '10%' }} />
                 )}
                 {selectedItem.jacket && (
-                    <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='30%' style={{ top: '50%' }} />
+                    <OverlayImg src={`Test_jacket${imageIndex.jacket + 1}.png`} width='30%' style={{ top: '20%' }} />
                 )}
             </BooContainer>
             <CustomCenter>

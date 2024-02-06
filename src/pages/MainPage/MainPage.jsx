@@ -27,11 +27,18 @@ export default function MainPage() {
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
 
   // 항목 표시 여부 토글
+  // 객체 형태로, glass와 jacket 항목의 표시 여부를 boolean 값으로 관리
+  // selectedItem 상태의 복사본을 만들고 (...prev), 주어진 item의 값을 현재의 반대로 설정 (!prev[item])
+  // 예를 들어, selectedItem 상태가 { glass: false, jacket: false } 이고, toggleItem('glass')가 호출되면
+  // 상태는 { glass: true, jacket: false }로 업데이트 된다
   const toggleItem = (item) => {
     setSelectedItem(prev => ({ ...prev, [item]: !prev[item] }));
   };
 
-  // '다음' 버튼 클릭 핸들러 수정
+  // '다음' 버튼
+  // imageIndex 상태의 복사본을 만들고, 주어진 item에 대한 인덱스를 현재 값에서 1 증가시킨 후
+  // 해당 항목의 이미지 배열 길이로 나눈 나머지가 값이 된다
+  // 인덱스가 이미지 배열의 범위를 넘어가지 않도록 하기 위함
   const handleNextClick = (item) => {
     setImageIndex((prev) => ({
       ...prev,
@@ -39,7 +46,10 @@ export default function MainPage() {
     }));
   };
 
-  // '이전' 버튼 클릭 핸들러 수정
+  // '이전' 버튼
+  // imageIndex 상태의 복사본을 만들고, 주어진 item에 대한 인덱스를 현재 값에서 1 감소
+  // 인덱스가 0 미만이 될 경우, 해당 항목의 이미지 배열 길이에서 1을 뺀 값으로 설정 -> 인덱스가 순환적으로 다루어지도록.
+  // 사용자가 이전 버튼을 눌렀을 때 마지막 이미지로 이동
   const handlePrevClick = (item) => {
     setImageIndex((prev) => ({
       ...prev,
