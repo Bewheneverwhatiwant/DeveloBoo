@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import StyledImg from '../../Components/Container/StyledImg';
 import CustomRow from '../../Components/Container/CustomRow';
@@ -39,6 +39,8 @@ margin: 5px;
 
 export default function Test_man({ selectedItem, imageIndex, handlePrevClick, handleNextClick }) {
 
+    const booContainerRef = useRef(null);
+
     return (
         <CustomRow>
             <CustomCenter>
@@ -51,7 +53,7 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
                     )}
                 </CustomColumn>
             </CustomCenter>
-            <BooContainer>
+            <BooContainer ref={booContainerRef} id="booContainer">
                 <StyledImg src={'Test_man.png'} width='80%' height='100%' />
                 {selectedItem.glass && (
                     <OverlayImg src={`Test_glass${imageIndex.glass + 1}.png`} width='20%' style={{ top: '10%' }} />

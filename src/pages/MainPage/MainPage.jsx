@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Test_buttons from './Test_buttons';
 import Test_man from './Test_man';
+import html2canvas from 'html2canvas';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -19,9 +20,20 @@ const PageContainer = styled(ContainerCenter)`
   gap: 30px;
 `;
 
+const Down = styled.button`
+background-color: skyblue;
+color: blue;
+border: none;
+border-radius: 10px;
+padding: 10px;
+font-family: 'RIDIBatang';
+font-size: 10px;
+`;
+
 export default function MainPage() {
   const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false });
   const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
+  const booContainerRef = useRef(null); // BooContainer를 참조하기 위한 ref 추가
 
   const glassImages = ['Test_glass1.png', 'Test_glass2.png', 'Test_glass3.png', 'Test_glass4.png'];
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
@@ -57,6 +69,17 @@ export default function MainPage() {
     }));
   };
 
+  const downloadImage = () => {
+    const element = document.getElementById('booContainer'); // id를 사용하여 요소 선택
+    html2canvas(element).then((canvas) => {
+      const image = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = 'capture.png';
+      link.click();
+    });
+  };
+
   return (
     <ContainerCenter>
       <PageContainer>
@@ -66,8 +89,10 @@ export default function MainPage() {
           imageIndex={imageIndex}
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
+          ref={booContainerRef}
         />
         <Test_buttons onSelect={toggleItem} />
+        <Down onClick={downloadImage}>다운로드 하기</Down>
       </PageContainer>
     </ContainerCenter>
   );
