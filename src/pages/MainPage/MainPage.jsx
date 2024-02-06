@@ -56,11 +56,20 @@ display: flex;
   position: relative;
 `;
 
+const OnlyBoo2 = styled.div`
+display: flex;
+position: relative;
+`;
+
 export default function MainPage() {
   const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false, chat: false });
   const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
   const booContainerRef = useRef(null); // BooContainer를 참조하기 위한 ref 추가
   const [showPreview, setShowPreview] = useState(false); // 미리보기 표시
+
+  const [chatText, setChatText] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [displayText, setDisplayText] = useState('');
 
   const glassImages = ['Test_glass1.png', 'Test_glass2.png', 'Test_glass3.png', 'Test_glass4.png'];
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
@@ -108,7 +117,11 @@ export default function MainPage() {
   };
 
   const togglePreview = () => {
-    setShowPreview(!showPreview); // 미리보기 표시 상태 토글
+    setShowPreview(!showPreview);
+  };
+
+  const handleDoubleClick = () => {
+    setIsEditing(true);
   };
 
   return (
@@ -121,6 +134,9 @@ export default function MainPage() {
           handlePrevClick={handlePrevClick}
           handleNextClick={handleNextClick}
           ref={booContainerRef}
+
+          chatText={chatText}
+          setChatText={setChatText}
         />
         <Test_buttons onSelect={toggleItem} />
         <Down onClick={togglePreview}>미리보기</Down>
@@ -129,7 +145,13 @@ export default function MainPage() {
 
             <CustomColumn>
               {selectedItem.chat && (
-                <StyledImg src={'icon_chat.png'} width='90%' height='40vh' />
+                <OnlyBoo2>
+                  <StyledImg src={'icon_chat.png'} width='90%' height='40vh' onDoubleClick={handleDoubleClick} />
+
+                  <p style={{ position: 'absolute', top: '25%', left: '10%', color: 'black', zIndex: 3 }}>
+                    {chatText}
+                  </p>
+                </OnlyBoo2>
               )}
               <OnlyBoo>
                 <StyledImg src={'Test_man.png'} width='80%' height='100%' />
