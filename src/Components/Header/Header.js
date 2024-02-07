@@ -1,4 +1,7 @@
 import { styled } from 'styled-components';
+import StyledImg from '../Container/StyledImg';
+import CustomRow from '../Container/CustomRow';
+import CustomCenter from '../Container/CustomCenter';
 
 const HeaderContainer = styled.header`
 height: 5vh;
@@ -10,10 +13,22 @@ height: 5vh;
     color: white;
 `;
 
+const Boo = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+
+color: white;
+font-family: 'RIDIBatang';
+font-size: 1rem;
+`;
+
 export default function Component() {
     return (
         <HeaderContainer>
-            안녕
+            <Boo>
+                Custom Boo!
+            </Boo>
         </HeaderContainer>
     );
 };
