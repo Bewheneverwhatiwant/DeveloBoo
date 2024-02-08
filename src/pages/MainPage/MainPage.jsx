@@ -7,6 +7,8 @@ import StyledImg from '../../Components/Container/StyledImg';
 import CustomColumn from '../../Components/Container/CustomColumn';
 import CustomCenter from '../../Components/Container/CustomCenter';
 import CustomRow from '../../Components/Container/CustomRow';
+import Warning from './Warning';
+import Intro from './Intro';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -154,6 +156,7 @@ export default function MainPage() {
   return (
     <ContainerCenter>
       <PageContainer>
+        <Intro />
         <Test_man
           selectedItem={selectedItem}
           imageIndex={imageIndex}
@@ -201,6 +204,8 @@ export default function MainPage() {
 
           </PreviewContainer>
         )}
+
+        <Warning />
 
         <Down onClick={downloadImage}>다운로드 하기</Down>
       </PageContainer>
