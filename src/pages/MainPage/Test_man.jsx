@@ -13,6 +13,14 @@ const BooContainer = styled.div`
   justify-content: center;
 `;
 
+const BooContainer2 = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const OnlyBoo = styled.div`
 display: flex;
   align-items: center;
@@ -108,19 +116,10 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
     };
 
     return (
-        <CustomRow>
-            <CustomCenter>
-                <CustomColumn>
-                    {selectedItem.glass && (
-                        <MoveButton onClick={() => handlePrevClick('glass')}>이전 안경</MoveButton>
-                    )}
-                    {selectedItem.jacket && (
-                        <MoveButton onClick={() => handlePrevClick('jacket')}>이전 자켓</MoveButton>
-                    )}
-                </CustomColumn>
-            </CustomCenter>
+        <CustomColumn>
+
             <BooContainer ref={booContainerRef} id="booContainer">
-                <CustomColumn>
+                <CustomColumn gap='5px'>
                     {selectedItem.chat && (
                         <OnlyBoo2>
                             <StyledImg src={'icon_chat.png'} width='90%' height='40vh' onDoubleClick={handleDoubleClick} />
@@ -151,16 +150,28 @@ export default function Test_man({ selectedItem, imageIndex, handlePrevClick, ha
                     </OnlyBoo>
                 </CustomColumn>
             </BooContainer>
-            <CustomCenter>
-                <CustomColumn>
-                    {selectedItem.glass && (
-                        <MoveButton onClick={() => handleNextClick('glass')}>다음 안경</MoveButton>
-                    )}
-                    {selectedItem.jacket && (
-                        <MoveButton onClick={() => handleNextClick('jacket')}>다음 자켓</MoveButton>
-                    )}
-                </CustomColumn>
-            </CustomCenter>
-        </CustomRow>
+
+            <BooContainer2>
+                <CustomRow>
+                    <CustomColumn>
+                        {selectedItem.glass && (
+                            <MoveButton onClick={() => handlePrevClick('glass')}>이전 안경</MoveButton>
+                        )}
+                        {selectedItem.jacket && (
+                            <MoveButton onClick={() => handlePrevClick('jacket')}>이전 자켓</MoveButton>
+                        )}
+                    </CustomColumn>
+
+                    <CustomColumn>
+                        {selectedItem.glass && (
+                            <MoveButton onClick={() => handleNextClick('glass')}>다음 안경</MoveButton>
+                        )}
+                        {selectedItem.jacket && (
+                            <MoveButton onClick={() => handleNextClick('jacket')}>다음 자켓</MoveButton>
+                        )}
+                    </CustomColumn>
+                </CustomRow>
+            </BooContainer2>
+        </CustomColumn>
     );
 }

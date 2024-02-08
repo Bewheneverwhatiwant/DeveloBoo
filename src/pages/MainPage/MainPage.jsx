@@ -141,7 +141,6 @@ export default function MainPage() {
   return (
     <ContainerCenter>
       <PageContainer>
-        메인 페이지
         <Test_man
           selectedItem={selectedItem}
           imageIndex={imageIndex}

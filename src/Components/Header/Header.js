@@ -9,7 +9,7 @@ height: 5vh;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: skyblue;
+    background-color: white;
     color: white;
 `;
 
@@ -18,7 +18,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 
-color: white;
+color: skyblue;
 font-family: 'RIDIBatang';
 font-size: 1rem;
 `;
