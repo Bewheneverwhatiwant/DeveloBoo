@@ -36,6 +36,7 @@ border-radius: 10px;
 padding: 10px;
 font-family: 'RIDIBatang';
 font-size: 10px;
+box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 `;
 
 const PreviewContainer = styled.div`
