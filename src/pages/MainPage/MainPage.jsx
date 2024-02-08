@@ -9,6 +9,7 @@ import CustomCenter from '../../Components/Container/CustomCenter';
 import CustomRow from '../../Components/Container/CustomRow';
 import Warning from './Warning';
 import Intro from './Intro';
+import Howto from './Howto';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -91,6 +92,13 @@ justify-content: center;
 align-items: center;
 `;
 
+const LeftDiv = styled.div`
+width: 80%;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+`;
+
 export default function MainPage() {
   const [selectedItem, setSelectedItem] = useState({ glass: false, jacket: false, chat: false });
   const [imageIndex, setImageIndex] = useState({ glass: 0, jacket: 0 });
@@ -103,6 +111,12 @@ export default function MainPage() {
 
   const glassImages = ['Test_glass1.png', 'Test_glass2.png', 'Test_glass3.png', 'Test_glass4.png'];
   const jacketImages = ['Test_jacket1.png', 'Test_jacket2.png', 'Test_jacket3.png'];
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleComponent = () => {
+    setIsVisible(!isVisible);
+  };
 
   // 항목 표시 여부 토글
   // 객체 형태로, glass와 jacket 항목의 표시 여부를 boolean 값으로 관리
@@ -158,6 +172,10 @@ export default function MainPage() {
     <ContainerCenter>
       <PageContainer>
         <Intro />
+        <LeftDiv>
+          <Down onClick={toggleComponent}>사용방법</Down>
+        </LeftDiv>
+        {isVisible && <Howto />}
         <Test_man
           selectedItem={selectedItem}
           imageIndex={imageIndex}
