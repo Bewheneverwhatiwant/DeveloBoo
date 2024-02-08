@@ -6,6 +6,7 @@ import html2canvas from 'html2canvas';
 import StyledImg from '../../Components/Container/StyledImg';
 import CustomColumn from '../../Components/Container/CustomColumn';
 import CustomCenter from '../../Components/Container/CustomCenter';
+import CustomRow from '../../Components/Container/CustomRow';
 
 const ContainerCenter = styled.div`
   display: flex;
@@ -73,6 +74,18 @@ color: black;
 zIndex: 3;
 font-family: 'RIDIBatang';
 line-height: 20px;
+`;
+
+const Line = styled.div`
+width: 100px;
+height: 0.5px;
+background-color: pink;
+`;
+
+const LineContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
 `;
 
 export default function MainPage() {
@@ -151,6 +164,15 @@ export default function MainPage() {
           chatText={chatText}
           setChatText={setChatText}
         />
+        <CustomRow>
+          <LineContainer>
+            <Line />
+          </LineContainer>
+          <StyledImg src={'icon_brush.png'} width='20px' height='20px' />
+          <LineContainer>
+            <Line />
+          </LineContainer>
+        </CustomRow>
         <Test_buttons onSelect={toggleItem} />
         <Down onClick={togglePreview}>미리보기</Down>
         {showPreview && (
