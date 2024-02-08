@@ -173,7 +173,14 @@ export default function MainPage() {
       <PageContainer>
         <Intro />
         <LeftDiv>
-          <Down onClick={toggleComponent}>사용방법</Down>
+          <Down onClick={toggleComponent}>
+            <CustomRow>
+              <StyledImg src={'icon_cloud.png'} width='20px' height='20px' />
+              <CustomCenter>
+                사용방법
+              </CustomCenter>
+            </CustomRow>
+          </Down>
         </LeftDiv>
         {isVisible && <Howto />}
         <Test_man
