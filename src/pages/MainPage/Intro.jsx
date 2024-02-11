@@ -72,10 +72,10 @@ const StyledImg2 = styled.img`
 `;
 
 const images = [
-    'Test_glass1.png',
-    'Test_jacket1.png',
-    'Test_glass2.png',
-    'icon_chat.png'
+  'Test_glass1.png',
+  'Test_jacket1.png',
+  'Test_glass2.png',
+  'icon_chat.png'
 ];
 
 const ChatText = styled.a`
@@ -93,36 +93,36 @@ justify-content: center;
 `;
 
 export default function Test_buttons({ onSelect }) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 2000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000);
 
-        return () => clearInterval(timer);
-    }, []);
+    return () => clearInterval(timer);
+  }, []);
 
-    return (
-        <Banner>
-            <CustomRow>
-                <StyledImg2 src={'boo_intro.jpg'} />
-                <CustomCenter>
-                    <ChatText>
-                        안녕! 나는 한국외대 마스코트<br />Boo 라고 해.
-                    </ChatText>
-                </CustomCenter>
-            </CustomRow>
-            <CustomRow>
-                <ChatContainer>
-                    <ChatText>
-                        여러가지 아이템을 조합해서<br />너의 대학생활을<br />표현해줘!
-                    </ChatText>
-                </ChatContainer>
-                <ListContainer>
-                    <StyledImg src={images[currentIndex]} alt="슬라이드 이미지" />
-                </ListContainer>
-            </CustomRow>
-        </Banner>
-    );
+  return (
+    <Banner>
+      <CustomRow>
+        <StyledImg2 src={'boo_intro.jpg'} />
+        <CustomCenter>
+          <ChatText>
+            안녕! 나는 한국외대 마스코트<br />Boo 라고 해.
+          </ChatText>
+        </CustomCenter>
+      </CustomRow>
+      <CustomRow>
+        <ChatContainer>
+          <ChatText>
+            여러가지 아이템을 조합해서<br />너의 대학생활을<br />표현해줘!
+          </ChatText>
+        </ChatContainer>
+        <ListContainer>
+          <StyledImg src={images[currentIndex]} alt="슬라이드 이미지" />
+        </ListContainer>
+      </CustomRow>
+    </Banner>
+  );
 }
